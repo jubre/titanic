@@ -29,3 +29,4 @@ test_df.info()
 
 # Descriniendo los datos
 print(train_df.describe())
+print(train_df.describe(include=['O']))
