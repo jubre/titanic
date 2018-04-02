@@ -7,7 +7,7 @@ import random as rnd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-#%matplotlib inline
+# %matplotlib inline
 
 
 train_df = pd.read_csv('~/.kaggle/competitions/titanic/train.csv')
@@ -35,3 +35,7 @@ print(train_df[['Pclass', 'Survived']].groupby(['Pclass'], as_index=False).mean(
 print(train_df[["Sex", "Survived"]].groupby(['Sex'], as_index=False).mean().sort_values(by='Survived', ascending=False))
 print(train_df[["SibSp", "Survived"]].groupby(['SibSp'], as_index=False).mean().sort_values(by='Survived', ascending=False))
 print(train_df[["Parch", "Survived"]].groupby(['Parch'], as_index=False).mean().sort_values(by='Survived', ascending=False))
+
+# Analisis mediante visualizacion de las caracteristicas
+g = sns.FacetGrid(train_df, col='Survived')
+g.map(plt.hist, 'Age', bins=20)
