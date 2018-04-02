@@ -140,3 +140,31 @@ for dataset in combine:
     dataset['FamilySize'] = dataset['SibSp'] + dataset['Parch'] + 1
 
 print(train_df[['FamilySize', 'Survived']].groupby(['FamilySize'], as_index=False).mean().sort_values(by='Survived', ascending=False))
+
+# Creamos la caracteristica isAlone
+for dataset in combine:
+    dataset['IsAlone'] = 0
+    dataset.loc[dataset['FamilySize'] == 1, 'IsAlone'] = 1
+
+print(train_df[['IsAlone', 'Survived']].groupby(['IsAlone'], as_index=False).mean())
+
+# Delete columns Parch, SibSp, FamilySize
+train_df = train_df.drop(['Parch', 'SibSp', 'FamilySize'], axis=1)
+test_df = test_df.drop(['Parch', 'SibSp', 'FamilySize'], axis=1)
+combine = [train_df, test_df]
+
+print(train_df.head())
+
+# creamos la caracteristica Age*Class
+for dataset in combine:
+    dataset['Age*Class'] = dataset.Age * dataset.Pclass
+
+print(train_df.loc[:, ['Age*Class', 'Age', 'Pclass']].head(10))
+
+# Llenamos los valores faltantes de Embarked con el de mayor ocurrencia
+freq_port = train_df.Embarked.dropna().mode()[0]
+print(freq_port)
+for dataset in combine:
+    dataset['Embarked'] = dataset['Embarked'].fillna(freq_port)
+
+print(train_df[['Embarked', 'Survived']].groupby(['Embarked'], as_index=False).mean().sort_values(by='Survived', ascending=False))
