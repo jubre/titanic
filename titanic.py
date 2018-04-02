@@ -272,4 +272,16 @@ random_forest.fit(X_train, Y_train)
 Y_pred = random_forest.predict(X_test)
 random_forest.score(X_train, Y_train)
 acc_random_forest = round(random_forest.score(X_train, Y_train) * 100, 2)
-acc_random_forest
+print(acc_random_forest)
+
+
+# Evaluacion Final de los Modelos
+models = pd.DataFrame({
+    'Model': ['Support Vector Machines', 'KNN', 'Logistic Regression',
+              'Random Forest', 'Naive Bayes', 'Perceptron',
+              'Stochastic Gradient Decent', 'Linear SVC',
+              'Decision Tree'],
+    'Score': [acc_svc, acc_knn, acc_log,
+              acc_random_forest, acc_gaussian, acc_perceptron,
+              acc_sgd, acc_linear_svc, acc_decision_tree]})
+models.sort_values(by='Score', ascending=False)
