@@ -71,3 +71,9 @@ combine = [train_df, test_df]
 train_df.shape, test_df.shape
 
 print(train_df.head())
+
+# Convirtiendo la caracteristica Sex
+for dataset in combine:
+    dataset['Sex'] = dataset['Sex'].map( {'female': 1, 'male': 0} ).astype(int)
+
+print(train_df.head())
