@@ -215,3 +215,10 @@ logreg.fit(X_train, Y_train)
 Y_pred = logreg.predict(X_test)
 acc_log = round(logreg.score(X_train, Y_train) * 100, 2)
 print(acc_log)
+
+# Support Vector Machines
+svc = SVC()
+svc.fit(X_train, Y_train)
+Y_pred = svc.predict(X_test)
+acc_svc = round(svc.score(X_train, Y_train) * 100, 2)
+print(acc_svc)
