@@ -244,3 +244,10 @@ perceptron.fit(X_train, Y_train)
 Y_pred = perceptron.predict(X_test)
 acc_perceptron = round(perceptron.score(X_train, Y_train) * 100, 2)
 print(acc_perceptron)
+
+# Linear SVC
+linear_svc = LinearSVC()
+linear_svc.fit(X_train, Y_train)
+Y_pred = linear_svc.predict(X_test)
+acc_linear_svc = round(linear_svc.score(X_train, Y_train) * 100, 2)
+acc_linear_svc
