@@ -237,3 +237,10 @@ gaussian.fit(X_train, Y_train)
 Y_pred = gaussian.predict(X_test)
 acc_gaussian = round(gaussian.score(X_train, Y_train) * 100, 2)
 print(acc_gaussian)
+
+# Perceptron
+perceptron = Perceptron()
+perceptron.fit(X_train, Y_train)
+Y_pred = perceptron.predict(X_test)
+acc_perceptron = round(perceptron.score(X_train, Y_train) * 100, 2)
+print(acc_perceptron)
