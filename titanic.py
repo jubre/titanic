@@ -250,11 +250,19 @@ linear_svc = LinearSVC()
 linear_svc.fit(X_train, Y_train)
 Y_pred = linear_svc.predict(X_test)
 acc_linear_svc = round(linear_svc.score(X_train, Y_train) * 100, 2)
-acc_linear_svc
+print(acc_linear_svc)
 
 # Stochastic Gradient Descent
 sgd = SGDClassifier()
 sgd.fit(X_train, Y_train)
 Y_pred = sgd.predict(X_test)
 acc_sgd = round(sgd.score(X_train, Y_train) * 100, 2)
-acc_sgd
+print(acc_sgd)
+
+
+# Decision Tree
+decision_tree = DecisionTreeClassifier()
+decision_tree.fit(X_train, Y_train)
+Y_pred = decision_tree.predict(X_test)
+acc_decision_tree = round(decision_tree.score(X_train, Y_train) * 100, 2)
+acc_decision_tree
