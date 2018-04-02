@@ -41,6 +41,16 @@ g = sns.FacetGrid(train_df, col='Survived')
 g.map(plt.hist, 'Age', bins=20)
 
 
+# Eliminamos Ticket y Cabin
+print("Before", train_df.shape, test_df.shape, combine[0].shape, combine[1].shape)
+
+train_df = train_df.drop(['Ticket', 'Cabin'], axis=1)
+test_df = test_df.drop(['Ticket', 'Cabin'], axis=1)
+combine = [train_df, test_df]
+
+"After", train_df.shape, test_df.shape, combine[0].shape, combine[1].shape
+
+
 # Limpiando caracteristica Nombre y creando la caracteristica Title
 for dataset in combine:
     dataset['Title'] = dataset.Name.str.extract(' ([A-Za-z]+)\.', expand=False)
@@ -118,3 +128,15 @@ for dataset in combine:
     dataset.loc[ dataset['Age'] > 64, 'Age']
 
 print(train_df.head())
+
+# Eliminas la columna con bandas
+train_df = train_df.drop(['AgeBand'], axis=1)
+combine = [train_df, test_df]
+
+print(train_df.head())
+
+# Creamos una nueva caracteristica: FamilySize = combines Parch + SibSp
+for dataset in combine:
+    dataset['FamilySize'] = dataset['SibSp'] + dataset['Parch'] + 1
+
+print(train_df[['FamilySize', 'Survived']].groupby(['FamilySize'], as_index=False).mean().sort_values(by='Survived', ascending=False))
