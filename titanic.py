@@ -69,3 +69,5 @@ train_df = train_df.drop(['Name', 'PassengerId'], axis=1)
 test_df = test_df.drop(['Name'], axis=1)
 combine = [train_df, test_df]
 train_df.shape, test_df.shape
+
+print(train_df.head())
