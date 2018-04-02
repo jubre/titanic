@@ -284,4 +284,5 @@ models = pd.DataFrame({
     'Score': [acc_svc, acc_knn, acc_log,
               acc_random_forest, acc_gaussian, acc_perceptron,
               acc_sgd, acc_linear_svc, acc_decision_tree]})
-models.sort_values(by='Score', ascending=False)
+
+print(models.sort_values(by='Score', ascending=False))
