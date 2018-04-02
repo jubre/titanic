@@ -13,3 +13,8 @@ Seguiremos los siguientes pasos para dar solucion al problema:
 5. modelar, predecir y resolver el problema.
 6. Visualizar, realizar el reporte y presentar la solución al problema, paso a paso.
 7. Enviar los resultados.
+
+## Las librerias utilizadas fueron:
+`import pandas as pd`
+`import seaborn as sns`
+`import sklearn`
