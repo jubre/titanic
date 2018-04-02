@@ -7,8 +7,17 @@ import random as rnd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# %matplotlib inline
+# machine learning
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC, LinearSVC
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.linear_model import Perceptron
+from sklearn.linear_model import SGDClassifier
+from sklearn.tree import DecisionTreeClassifier
 
+# %matplotlib inline
 
 train_df = pd.read_csv('~/.kaggle/competitions/titanic/train.csv')
 test_df = pd.read_csv('~/.kaggle/competitions/titanic/test.csv')
@@ -194,3 +203,15 @@ train_df = train_df.drop(['FareBand'], axis=1)
 combine = [train_df, test_df]
 
 print(train_df.head(10))
+
+# Iniciamos el Modelado
+X_train = train_df.drop("Survived", axis=1)
+Y_train = train_df["Survived"]
+X_test  = test_df.drop("PassengerId", axis=1).copy()
+
+# Logistic Regression
+logreg = LogisticRegression()
+logreg.fit(X_train, Y_train)
+Y_pred = logreg.predict(X_test)
+acc_log = round(logreg.score(X_train, Y_train) * 100, 2)
+print(acc_log)
