@@ -286,3 +286,10 @@ models = pd.DataFrame({
               acc_sgd, acc_linear_svc, acc_decision_tree]})
 
 print(models.sort_values(by='Score', ascending=False))
+
+# Save submission file
+submission = pd.DataFrame({
+        "PassengerId": test_df["PassengerId"],
+        "Survived": Y_pred
+    })
+submission.to_csv('submission.csv', index=False)
