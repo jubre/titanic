@@ -105,3 +105,16 @@ for dataset in combine:
     dataset['Age'] = dataset['Age'].astype(int)
 
 print(train_df.head())
+
+# Crearemos las bandas de Edad para normalizarlos
+train_df['AgeBand'] = pd.cut(train_df['Age'], 5)
+print(train_df[['AgeBand', 'Survived']].groupby(['AgeBand'], as_index=False).mean().sort_values(by='AgeBand', ascending=True))
+
+for dataset in combine:
+    dataset.loc[ dataset['Age'] <= 16, 'Age'] = 0
+    dataset.loc[(dataset['Age'] > 16) & (dataset['Age'] <= 32), 'Age'] = 1
+    dataset.loc[(dataset['Age'] > 32) & (dataset['Age'] <= 48), 'Age'] = 2
+    dataset.loc[(dataset['Age'] > 48) & (dataset['Age'] <= 64), 'Age'] = 3
+    dataset.loc[ dataset['Age'] > 64, 'Age']
+
+print(train_df.head())
