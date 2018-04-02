@@ -259,10 +259,17 @@ Y_pred = sgd.predict(X_test)
 acc_sgd = round(sgd.score(X_train, Y_train) * 100, 2)
 print(acc_sgd)
 
-
 # Decision Tree
 decision_tree = DecisionTreeClassifier()
 decision_tree.fit(X_train, Y_train)
 Y_pred = decision_tree.predict(X_test)
 acc_decision_tree = round(decision_tree.score(X_train, Y_train) * 100, 2)
-acc_decision_tree
+print(acc_decision_tree)
+
+# Random Forest
+random_forest = RandomForestClassifier(n_estimators=100)
+random_forest.fit(X_train, Y_train)
+Y_pred = random_forest.predict(X_test)
+random_forest.score(X_train, Y_train)
+acc_random_forest = round(random_forest.score(X_train, Y_train) * 100, 2)
+acc_random_forest
